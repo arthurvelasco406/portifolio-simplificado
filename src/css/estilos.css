@@ -1,0 +1,250 @@
+html {
+    /*Coloca cor de texto de todo o html de branco*/
+    color: #fff;
+    scroll-behavior: smooth;
+}
+
+body {
+    /*A vírgula serve para caso não haja a fonte Poppins carregada, ele garrega como sans-serif*/
+    font-family: "Poppins", sans-serif;
+    /*0 em cima e em baixo e auto na esquerda e direita*/
+    /*Para usar o margin '0 auto' DEVE TER um max-width*/
+    margin: 0 auto;
+    max-width: 1120px;
+    background: linear-gradient(150deg, #000000, #9e00ff);
+    background-size: 120% 120%;
+}
+
+.cabecalho {
+    display: flex;
+    justify-content: space-between;
+    /*Alinha os itens para ficar no centro da "linha" (altura dentro da "linha")*/
+    align-items: center;
+    padding: 30px 15px;
+}
+
+.cabecalho .logo {
+    width: 80px;
+    height: 80px;
+    /*Regula o arredondamento do quadrado (digamos assim)*/
+    border-radius: 50%;
+    border: 2px solid #fff;
+    text-decoration: underline;
+    text-align: center;
+    line-height: 70px;
+    font-family: "Raleway", sans-serif;
+    transition: 0.2s;
+}
+
+/*HOVER = Quando o mouse passar por cima. Ou seja quando passar por cima do a, o logo vai receber a estilização*/
+.cabecalho a:hover .logo {
+    color: #9443d8;
+    border: 2px solid #9443d8;
+}
+
+.cabecalho .menu li a {
+    font-size: 20px;
+    /*Transforma as primeiras letras de cada palavra em maiúsculo. Pode colocar UpperCase que fica tudo maiúsculo*/
+    text-transform: capitalize;
+    padding: 10px 20px;
+    transition: 0.2s;
+}
+
+.cabecalho .menu li a:hover {
+    background-color: #9443d8;
+    color: #fff;
+    /*Agora usei PX e não %*/
+    border-radius: 50px;
+}
+
+.home {
+    display: flex;
+    /*Serve para que mostre apenas a primeira dobra da página. O 125 é a altura do cabeçalho, isso pode ser calculado no 'especionar elemento' do navegador.*/
+    /*Se usar só 100vj não funciona porque existe o cabeçalho que ocupa espaço também.*/
+    min-height: calc(100vh - 125px);
+    align-items: center;
+    /*O gap é um espaçamento entre os elementos filhos (filhos de home)*/
+    gap: 50px;
+    justify-content: space-between;
+}
+
+.home .informacoes {
+    display: flex;
+    /*Coloca o flex como coluna (um elemento em baixo do outro)*/
+    /*Quando acionamos o flex, ele automaticamente (default) é colocado como "flex-direction: row" o que faz que os elemntos fiquem em linha. Aqui, então, estamos mudando esse 'default'*/
+    flex-direction: column;
+    gap: 15px;
+    /*Espaço entre as letras*/
+    letter-spacing: 2px;
+    padding: 0 15px;
+    /*Vai ocupar 50% da largura da página. Porcentagem é boa para responsividade porque é uma medida relativa ao tamanho da tela do usuário.*/
+    max-width: 50%;
+}
+
+.home .informacoes h1 {
+    font-family: "Raleway", sans-serif;
+    font-size: 45px;
+    margin-bottom: 20px;
+}
+
+.home .informacoes p {
+    font-family: "Raleway", sans-serif;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.home .redes-sociais {
+    /*Muda a lista para os itens ficarem um do lado do outro*/
+    display: flex;
+    gap: 20px;
+    ;
+}
+
+.home .redes-sociais a i {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    padding: 10px;
+    text-align: center;
+    font-size: 26px;
+    transition: 0.3;
+    border: 1px solid #fff;
+}
+
+.home .redes-sociais a i:hover {
+    color: #9443d8;
+    border: 1px solid #9443d8;
+    /*Isso vai aumentar a escala (tamanho) do elemento*/
+    transform: scale(1.1);
+}
+
+.home .container-foto .foto {
+    max-width: 450px;
+    /*Ajuste pessoal para a foto ficar melhor*/
+    height: 450px;
+    border-radius: 50%;
+}
+
+.home .container-foto img {
+    width: 100%;
+    /*Ajuste pessoal para a foto ficar melhor*/
+    height: 98%;
+    border-radius: 50%;
+}
+
+.home .foto.sombra-interna {
+    background: linear-gradient(to right, #8A35C8, #18C063, #00EEA2);
+    /*Isso é para a animação do fundo da foto de perfil*/
+    background-size: 180% 180%;
+    animation: gradient-animation 5s ease infinite;
+}
+
+.projetos {
+    /*70px em cima e em baixo e 0 dos lados*/
+    padding: 70px 0 70px;
+}
+
+.projetos .titulo {
+    text-align: center;
+    padding: 60px 0;
+    font-size: 45px;
+    /*Peso da fonte. Muda o quão negrito a fonte fica*/
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.projetos .container-projetos {
+    display: flex;
+    gap: 20px;
+    /*Ele irá colocar um projeto um do lado do outro (pq tem o display flex) mas caso não caiba, ele coloca em baixo. MUITO BOM PARA A RESPONSIVIDADE*/
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+    justify-content: center;
+}
+
+.projetos .projeto {
+    max-width: 260px;
+    max-height: 500px;
+    position: relative;
+    display: none;
+}
+
+/*Fica junto pq o elemento tem duas classes*/
+.projetos .projeto.ativo {
+    /*Vai mostrar apenas os projetos ativos pq todos o sprojetos já têm display = none, ou seja não são mostrados*/
+    display: block;
+}
+
+.projetos .projeto img {
+    height: 100%;
+}
+
+.projetos .projeto h3 {
+    background-color: #040203;
+    width: 100%;
+    padding-left: 20px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    /*Para usar o 'absolute' a div pai desse aqui deve ter o 'relative' se não não funciona, ele se perde.*/
+    position: absolute;
+    bottom: 0;
+}
+
+.projetos .projeto .informacoes-projeto {
+    background-color: #040203;
+    position: absolute;
+    /*As informações vão para cima*/
+    top: 0;
+    width: 100%;
+    height: 100%;
+    /*Mexe no negrito da fonte*/
+    font-weight: 600;
+    opacity: 0;
+    transition: 0.3s;
+    padding: 20px;
+}
+
+.projetos .container-projetos .projeto:hover .informacoes-projeto {
+    opacity: 0.7;
+    background-color: #000;
+}
+
+.projetos .btn-mostrar-projetos {
+    background: none;
+    border: 1px solid #fff;
+    border-radius: 15px;
+    color: #ffffff;
+    width: 180px;
+    padding: 20px;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.projetos .btn-mostrar-projetos:hover {
+    background-color: #9443d8;
+    transition: 0.3s;
+}
+
+.projetos .btn-mostrar-projetos.remover {
+    display: none;
+}
+
+/*Animação do fundo da foto de perfil*/
+@keyframes gradient-animation {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
